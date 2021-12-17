@@ -15,7 +15,7 @@ export const App = () => {
   const [movie, setMovie] = useState(mockMovie)
 
   const handleCardClick = (item) => {
-    console.log('영화 목록을 클릭했군요!');
+    console.log('영화 목록을 클릭했군');
     // TODO: 현재 선택한 영화가 바뀌어야 합니다
 
   };
