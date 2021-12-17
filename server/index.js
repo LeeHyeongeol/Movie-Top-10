@@ -15,12 +15,14 @@ app.get('/movies', (req, res) => {
 
 app.get('/movies/:id', (req, res) => {
   // TODO:
-  const movie = movies.find(movie => movie.id === Number(req.params.id));
-  if (!movie) {
-    return res.status(404).send("영화 정보를 찾을 수 없습니다");
+  const movie = movies.find(item => item.id === req.params.id) //요청된 id와 같은 id를 가지는 영화정보만 필터링함.
+  if (movie) {
+    return res.status(200).send(movie)
+  } else {
+    return res.status(404).send('조회하신 영화는 존재하지 않습니다.')
   }
-  res.status(200).send(movie);
-});
+})
+
 
 // 테스트를 위한 코드입니다. 건드리지 마세요.
 if (process.env.NODE_ENV !== 'test') {
