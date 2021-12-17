@@ -9,14 +9,14 @@ import mockMovie from './static/mockMovie';
 
 export const App = () => {
   //현재 영화내용
+  const [nowMovie, setnowMovie] = useState(mockMovie[0])
   //엔트리에 업데이트할 영화 목록
-  const [nowmovie, setnowMovie] = useState(getMovies[0])
-  const [movielist, setMovieList] = useState({ getMovies })
+
 
   const handleCardClick = (item) => {
     console.log('영화 목록을 클릭했군요!');
     // TODO: 현재 선택한 영화가 바뀌어야 합니다
-    const list = getMovies.filter(object => object.id === item)
+    const list = getMovies.find(obj => obj.id === item.id)
     setnowMovie(list)
   };
 
@@ -28,8 +28,8 @@ export const App = () => {
         <Header />
       </div>
       <div className='body'>
-        <CurrentMovie movie={mockMovie[0]} />
-        <MovieRankList movies={mockMovie[0]} handleCardClick={handleCardClick} />
+        <CurrentMovie movie={nowMovie} />
+        <MovieRankList params={params} movies={mockMovie} cardClick={handleCardClick} />
       </div>
     </>
   );
